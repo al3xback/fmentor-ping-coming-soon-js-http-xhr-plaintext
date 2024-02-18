@@ -17,14 +17,16 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: https://al3xback.github.io/fmentor-ping-coming-soon-flex/
+- Live Site URL: https://al3xback.github.io/fmentor-ping-coming-soon-js-http-xhr-plaintext/
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- Display flex
+- Js HTTP
+- XHR
+- Plaintext
 - Mobile-first workflow
 
 ## Author

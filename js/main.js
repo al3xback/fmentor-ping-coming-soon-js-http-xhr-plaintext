@@ -25,18 +25,28 @@ const renderSectionContent = (data) => {
 	const [title, subtitle, imageInfo] = data.split('\n');
 	const [imageSrc, imageAlt] = imageInfo.split(' | ');
 
-	const sectionTemplateNode = document.importNode(sectionTemplate.content, true);
+	const sectionTemplateNode = document.importNode(
+		sectionTemplate.content,
+		true
+	);
 	const sectionEl = sectionTemplateNode.querySelector('.section');
 
 	const cardIntroTitleEl = sectionEl.querySelector('.card-intro__title');
 	const cardIntroTitleSpanEl = cardIntroTitleEl.querySelector('.light');
-	cardIntroTitleSpanEl.textContent = title.substring(0, title.lastIndexOf(' '));
+	cardIntroTitleSpanEl.textContent = title.substring(
+		0,
+		title.lastIndexOf(' ')
+	);
 	cardIntroTitleEl.append(title.substring(title.lastIndexOf(' ')));
 
-	const cardIntroSubtitleEl = sectionEl.querySelector('.card-intro__subtitle');
+	const cardIntroSubtitleEl = sectionEl.querySelector(
+		'.card-intro__subtitle'
+	);
 	cardIntroSubtitleEl.textContent = subtitle;
 
-	const cardContentImageEl = sectionEl.querySelector('.card-content__image img');
+	const cardContentImageEl = sectionEl.querySelector(
+		'.card-content__image img'
+	);
 	cardContentImageEl.src = './images/' + imageSrc;
 	cardContentImageEl.alt = imageAlt;
 
