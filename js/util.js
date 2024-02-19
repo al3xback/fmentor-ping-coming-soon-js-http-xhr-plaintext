@@ -1,20 +1,21 @@
-const sendHttpRequest = (method, url, cbSuccess, cbFail) => {
-	const xhr = new XMLHttpRequest();
+export const sendHttpRequest = (method, url) => {
+	const promise = new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
 
-	xhr.open(method, url);
+		xhr.open(method, url);
 
-	xhr.onreadystatechange = () => {
-		if (xhr.readyState === 4) {
-			const status = xhr.status;
-			if (status >= 200 && status < 400) {
-				cbSuccess(xhr.responseText);
-			} else {
-				cbFail('Could not fetch data, please try again later.');
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === 4) {
+				const status = xhr.status;
+				if (status >= 200 && status < 400) {
+					resolve(xhr.responseText);
+				} else {
+					reject('Could not fetch data, please try again later.');
+				}
 			}
-		}
-	};
+		};
 
-	xhr.send();
+		xhr.send();
+	});
+	return promise;
 };
-
-export { sendHttpRequest };
