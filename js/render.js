@@ -17,8 +17,7 @@ export const handleError = (msg) => {
 };
 
 export const renderSectionContent = (data) => {
-	const [title, subtitle, imageInfo] = data.split('\n');
-	const [imageSrc, imageAlt] = imageInfo.split(' | ');
+	const [title, subtitle, image] = data.split('\n');
 
 	const sectionTemplateNode = document.importNode(
 		sectionTemplate.content,
@@ -42,8 +41,10 @@ export const renderSectionContent = (data) => {
 	const cardContentImageEl = sectionEl.querySelector(
 		'.card-content__image img'
 	);
-	cardContentImageEl.src = './images/' + imageSrc;
-	cardContentImageEl.alt = imageAlt;
+	cardContentImageEl.src = './images/' + image;
+	cardContentImageEl.alt = image
+		.substring(0, image.indexOf('.'))
+		.replace('-', ' ');
 
 	removeLoading();
 	sectionWrapperEl.appendChild(sectionTemplateNode);
